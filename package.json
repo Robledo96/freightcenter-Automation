@@ -2,7 +2,7 @@
   "devDependencies": {
     "cypress": "^11.2.0"
   },
-  "name": "v3trasportation-automation",
+  "name": "freightcenter-automation",
   "description": "Automation Cypress e2e framework",
   "version": "1.0.0",
   "main": "index.js",
@@ -168,17 +168,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Robledo96/v3Trasportation-Automation.git"
+    "url": "git+https://github.com/Robledo96/freightcenter-Automation.git"
   },
   "keywords": [
-    "v3trasportation",
+    "freightcenter",
     "e2e",
     "test"
   ],
   "author": "Rolando Alfonso",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Robledo96/v3Trasportation-Automation/issues"
+    "url": "https://github.com/Robledo96/freightcenter-Automation/issues"
   },
-  "homepage": "https://github.com/Robledo96/v3Trasportation-Automation#readme"
+  "homepage": "https://github.com/Robledo96/freightcenter-Automation#readme"
 }
