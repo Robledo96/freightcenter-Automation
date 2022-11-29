@@ -47,18 +47,6 @@ describe('e2e Calculate Freight Rates #2', () => {
         cy.get('#ui-id-3', { timeout: 6000 })
             .should('contain', 'Miami, FL 33193, USA')
             .click()
-
-        cy.get('#date_pickup')
-
-        cy.get('#zip_destination', { timeout: 6000 })
-            .type('33180')
-        cy.get('#ui-id-103', { timeout: 6000 })
-            .should('contain', 'Aventura, FL 33180, USA')
-            .click()
-
-        cy.get('#Oversized').check()
-
-        cy.get('.col-md-12 > .btn')
-            .click()
     })
+
 })
