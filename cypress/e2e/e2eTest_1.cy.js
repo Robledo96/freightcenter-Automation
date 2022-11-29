@@ -1,4 +1,4 @@
-describe('e2e Calculate Freight Rates', () => {
+describe('e2e Calculate Freight Rates #1', () => {
     beforeEach(function () {
         const suite = cy.state('test').parent
         if (suite.tests.some(test => test.state === 'failed')) {
@@ -8,35 +8,44 @@ describe('e2e Calculate Freight Rates', () => {
 
     //Page 1
     it('Visit', () => {
-        cy.visit('/', { timeout: 60000 })
+        cy.visit('/', { timeout: 6000 })
     })
 
-    it('Calculate Freight Rates - click', () => {
-        cy.get(':nth-child(3) > .btn', { timeout: 60000 })
+    it('Calculate Freight Rates - redirect', () => {
+        cy.get(':nth-child(3) > .btn', { timeout: 6000 })
             .should('have.attr', 'href', '/quote')
             .and('be.visible')
             .click()
-        cy.location('pathname', { timeout: 60000 })
+        cy.location('pathname', { timeout: 6000 })
             .should('include', '/quote')
-        cy.get('h1', { timeout: 60000 })
+        cy.get('h1', { timeout: 6000 })
             .should('contain', 'Shipping Quote', 'Form')
             .and('be.visible')
     })
 
     it('Shipping Quote Form - form', () => {
-        cy.get('#orZip', { timeout: 60000 })
+        cy.get('.pr-lg-4 > input').check()
+            .should('be.checked')
+        cy.get('.pr-lg-4 > span')
+            .should('contain', 'Less-than-Truckload')
+
+
+        cy.get('#orZip', { timeout: 6000 })
             .should('have.attr', 'placeholder', 'Pickup Postal Code')
             .type('33193')
-        cy.get('.ui-menu-item > div', { timeout: 60000 })
-            .contains('Miami, FL 33193, USA')
+        cy.get('#ui-id-3', { timeout: 6000 })
+            .should('contain', 'Miami, FL 33193, USA')
             .click()
 
         cy.get('select').eq(0).select('Business (with a dock or forklift)')
-        cy.get('#deszip')
-            .type('Miami, FL 33101, USA')
 
-        cy.get('#desFacility')
-            .type('Business(without a dock or forklift)')
+        cy.get('#deszip')
+            .type('33180')
+        cy.get('#ui-id-24', { timeout: 6000 })
+            .should('contain', 'Aventura, FL 33180, USA')
+            .click()
+
+        cy.get('#desFacility').select('Business (with a dock or forklift)')
 
         cy.get('#ulenght')
             .should('have.attr', 'placeholder', 'Length')
@@ -53,5 +62,8 @@ describe('e2e Calculate Freight Rates', () => {
             .should('have.attr', 'placeholder', 'Weight')
             .type('120')
         cy.get('select').eq(3).select('kg')
+
+        cy.get('#tooltip-wrapper > .btn')
+            .click()
     })
 })
